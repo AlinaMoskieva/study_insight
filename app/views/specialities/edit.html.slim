@@ -1,0 +1,12 @@
+.rows
+  .columns
+    h2 Editing Speciality
+.rows
+  .medium-8.columns
+    = simple_form_for speciality do |f|
+      = f.input :name, required: true
+
+      .actions
+        = f.button :submit, class: "hollow button"
+        '
+        = link_to "Back", :back, class: "hollow button"

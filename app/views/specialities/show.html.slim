@@ -1,0 +1,12 @@
+.rows
+  .medium-7.medium-offset-3.columns
+    h2= speciality.name
+  .medium-2.columns
+    ul.dropdown.menu data-dropdown-menu=""
+      li
+        a href="#" class="hollow button"  Actions
+        ul class="menu"
+          li
+            = link_to "Edit", edit_speciality_path
+          li
+            = link_to "Delete", speciality, data: { confirm: "Are you sure?" }, method: :delete

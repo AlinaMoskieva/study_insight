@@ -2,6 +2,8 @@ class EducationalInstitutionsController < ApplicationController
   expose :educational_institutions, -> { EducationalInstitution.all }
   expose :educational_institution
 
+  expose :specialities, ->{ educational_institution.specialities }
+
   def create
     if educational_institution.save
       redirect_to educational_institution, notice: "Educational institution was successfully created."

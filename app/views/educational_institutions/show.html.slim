@@ -1,11 +1,33 @@
 .rows
-  .columns
+  .medium-7.medium-offset-3.columns
     p#notice = notice
-  .columns
-    = educational_institution.name
+    h2= educational_institution.name
+  .medium-2.columns
+    ul.dropdown.menu data-dropdown-menu=""
+      li
+        a href="#" class="hollow button"  Actions
+        ul class="menu"
+          li
+            = link_to "Edit", edit_educational_institution_path(educational_institution)
+          li
+            = link_to "Back", educational_institutions_path
+  .row
+    .medium-8.columns
+      h4 Specialities
+      table class="hollow"
+        thead
+          tr
+            th Name
+            th Edit
+            th Destroy
 
+        tbody
+          - specialities.each do |speciality|
+            tr
+              td = link_to speciality.name, speciality
+              td = link_to "Edit", edit_speciality_path(speciality)
+              td = link_to "Destroy", speciality, data: { confirm: "Are you sure?" }, method: :delete
 
+      br
 
-  = link_to "Edit", edit_educational_institution_path(educational_institution), class: "hollow button"
-  '
-  = link_to "Back", educational_institutions_path, class: "hollow button"
+      = link_to "Add speciality", new_educational_institution_speciality_path(educational_institution), class: "hollow button"

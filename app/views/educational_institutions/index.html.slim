@@ -1,0 +1,23 @@
+.row
+  .columns
+    h2 Listing of Educational institutions
+
+.row
+  .medium-8.columns
+    table class="hollow"
+      thead
+        tr
+          th Name
+          th Edit
+          th Destroy
+
+      tbody
+        - educational_institutions.each do |educational_institution|
+          tr
+            td = link_to educational_institution.name, educational_institution
+            td = link_to "Edit", edit_educational_institution_path(educational_institution)
+            td = link_to "Destroy", educational_institution, data: { confirm: "Are you sure?" }, method: :delete
+
+    br
+
+    = link_to "New Educational institution", new_educational_institution_path, class: "hollow button"

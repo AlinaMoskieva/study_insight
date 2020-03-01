@@ -1,0 +1,11 @@
+.rows
+  .columns
+    p#notice = notice
+  .columns
+    = educational_institution.name
+
+
+
+  = link_to "Edit", edit_educational_institution_path(educational_institution), class: "hollow button"
+  '
+  = link_to "Back", educational_institutions_path, class: "hollow button"

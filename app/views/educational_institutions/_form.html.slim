@@ -1,0 +1,14 @@
+= simple_form_for educational_institution do |f|
+  - if educational_institution.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(educational_institution.errors.count, "error")} prohibited this educational_institution from being saved:"
+      ul
+        - educational_institution.errors.full_messages.each do |message|
+          li = message
+
+  = f.input :name, required: true
+
+  .actions
+    = f.button :submit, class: "hollow button"
+    '
+    = link_to "Back", :back, class: "hollow button"

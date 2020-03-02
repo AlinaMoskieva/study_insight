@@ -3,6 +3,7 @@ class SpecialitiesController < ApplicationController
   expose :specialities, ->{ educational_institution.specialities }
 
   expose :educational_institution
+  expose :disciplines, ->{ speciality.disciplines }
 
   def create
     speciality.educational_institution = educational_institution

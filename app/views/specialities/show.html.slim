@@ -10,3 +10,23 @@
             = link_to "Edit", edit_speciality_path
           li
             = link_to "Delete", speciality, data: { confirm: "Are you sure?" }, method: :delete
+  .columns
+    .medium-8.columns
+      h4 Disciplines
+      table class="hollow"
+        thead
+          tr
+            th Name
+            th Edit
+            th Destroy
+
+        tbody
+          - disciplines.each do |discipline|
+            tr
+              td = link_to discipline.name, discipline
+              td = link_to "Edit", edit_discipline_path(discipline)
+              td = link_to "Destroy", discipline, data: { confirm: "Are you sure?" }, method: :delete
+
+      br
+
+      = link_to "Add discipline", new_speciality_discipline_path(speciality), class: "hollow button"

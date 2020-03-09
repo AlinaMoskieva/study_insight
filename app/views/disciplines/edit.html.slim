@@ -1,0 +1,14 @@
+.rows
+  .columns
+    h2 Editing Discipline
+.rows
+  .medium-8.columns
+    = simple_form_for discipline do |f|
+      = f.input :name, required: true
+      = f.input :description, as: :ckeditor
+      = f.input :course_number, as: :integer, input_html: { min: 1, max: 6 }, required: true
+
+      .actions
+        = f.button :submit, class: "hollow button"
+        '
+        = link_to "Back", :back, class: "hollow button"

@@ -1,5 +1,5 @@
 class DisciplinesController < ApplicationController
-  expose :discipline
+  expose_decorated :discipline
   expose :disciplines, ->{ specialitiy.discipline }
 
   expose :speciality
@@ -30,6 +30,6 @@ class DisciplinesController < ApplicationController
   private
 
   def discipline_params
-    params.require(:discipline).permit(:name)
+    params.require(:discipline).permit(:name, :description, :course_number)
   end
 end

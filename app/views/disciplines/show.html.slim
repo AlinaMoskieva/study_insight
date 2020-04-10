@@ -14,12 +14,14 @@
 
   h4 Description
   p = raw discipline.description
-.medium-2.columns
+.medium-3.columns
   ul.dropdown.menu data-dropdown-menu=""
     li
-      a href="#" class="hollow button" Actions
+      a href="#" class="hollow button" Actions with discipline
       ul class="menu"
         li
           = link_to "Edit", edit_discipline_path
         li
           = link_to "Delete", discipline, data: { confirm: "Are you sure?" }, method: :delete
+  br
+  = link_to "Add a new working program", new_discipline_working_program_path(discipline), class: "hollow button"

@@ -1,15 +1,15 @@
 .rows
   .medium-7.medium-offset-3.columns
-    h2= speciality.name
+    h2= training_direction.name
   .medium-2.columns
     ul.dropdown.menu data-dropdown-menu=""
       li
         a href="#" class="hollow button"  Actions
         ul class="menu"
           li
-            = link_to "Edit", edit_speciality_path
+            = link_to "Edit", edit_training_direction_path
           li
-            = link_to "Delete", speciality, data: { confirm: "Are you sure?" }, method: :delete
+            = link_to "Delete", training_direction, data: { confirm: "Are you sure?" }, method: :delete
   .columns
     .medium-8.columns
       h4 Disciplines
@@ -29,4 +29,4 @@
 
       br
 
-      = link_to "Add discipline", new_speciality_discipline_path(speciality), class: "hollow button"
+      = link_to "Add discipline", new_training_direction_discipline_path(training_direction), class: "hollow button"

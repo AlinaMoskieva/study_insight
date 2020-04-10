@@ -13,7 +13,7 @@
             = link_to "Back", educational_institutions_path
   .row
     .medium-8.columns
-      h4 Specialities
+      h4 Training directions
       table class="hollow"
         thead
           tr
@@ -22,12 +22,12 @@
             th Destroy
 
         tbody
-          - specialities.each do |speciality|
+          - training_directions.each do |training_direction|
             tr
-              td = link_to speciality.name, speciality
-              td = link_to "Edit", edit_speciality_path(speciality)
-              td = link_to "Destroy", speciality, data: { confirm: "Are you sure?" }, method: :delete
+              td = link_to training_direction.name, training_direction
+              td = link_to "Edit", edit_training_direction_path(training_direction)
+              td = link_to "Destroy", training_direction, data: { confirm: "Are you sure?" }, method: :delete
 
       br
 
-      = link_to "Add speciality", new_educational_institution_speciality_path(educational_institution), class: "hollow button"
+      = link_to "Add training_direction", new_educational_institution_training_direction_path(educational_institution), class: "hollow button"

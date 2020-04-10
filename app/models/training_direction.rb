@@ -1,4 +1,4 @@
-class Speciality < ApplicationRecord
+class TrainingDirection < ApplicationRecord
   validates :name, presence: true
 
   belongs_to :educational_institution

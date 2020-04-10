@@ -19,10 +19,10 @@ ActiveRecord::Schema.define(version: 20200310074547) do
     t.string "name", default: "", null: false
     t.text "description", default: ""
     t.integer "course_number", default: 1, null: false
-    t.bigint "speciality_id", null: false
+    t.bigint "training_direction_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["speciality_id"], name: "index_disciplines_on_speciality_id"
+    t.index ["training_direction_id"], name: "index_disciplines_on_training_direction_id"
   end
 
   create_table "educational_institutions", force: :cascade do |t|
@@ -32,12 +32,12 @@ ActiveRecord::Schema.define(version: 20200310074547) do
     t.index ["name"], name: "index_educational_institutions_on_name", unique: true
   end
 
-  create_table "specialities", force: :cascade do |t|
+  create_table "training_directions", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.bigint "educational_institution_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["educational_institution_id"], name: "index_specialities_on_educational_institution_id"
+    t.index ["educational_institution_id"], name: "index_training_directions_on_educational_institution_id"
   end
 
   create_table "users", force: :cascade do |t|

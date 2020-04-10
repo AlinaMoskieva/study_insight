@@ -2,7 +2,7 @@ class EducationalInstitutionsController < ApplicationController
   expose :educational_institutions, -> { EducationalInstitution.all }
   expose :educational_institution
 
-  expose :specialities, ->{ educational_institution.specialities }
+  expose :training_directions, ->{ educational_institution.training_directions }
 
   def create
     if educational_institution.save

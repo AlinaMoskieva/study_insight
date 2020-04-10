@@ -5,7 +5,7 @@ class CreateDisciplines < ActiveRecord::Migration[5.1]
       t.text :description, default: ""
       t.integer :course_number, null: false, default: 1
 
-      t.belongs_to :speciality, null: false
+      t.belongs_to :training_direction, null: false
 
       t.timestamps
     end

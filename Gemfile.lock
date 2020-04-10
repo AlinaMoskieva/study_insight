@@ -479,6 +479,7 @@ DEPENDENCIES
   pg
   poltergeist
   premailer-rails
+  pry (~> 0.10)
   puma
   pundit
   rack-canonical-host

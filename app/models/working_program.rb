@@ -10,4 +10,5 @@ class WorkingProgram < ApplicationRecord
 
   has_many :skills, dependent: :destroy
   has_many :competences, dependent: :destroy
+  has_many :program_modules, dependent: :destroy
 end

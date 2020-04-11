@@ -7,4 +7,6 @@ class WorkingProgram < ApplicationRecord
     presence: true
 
   belongs_to :discipline
+
+  has_many :skills, dependent: :destroy
 end

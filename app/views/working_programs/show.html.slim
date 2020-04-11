@@ -1,27 +1,50 @@
-.medium-8.columns
-  table class="hollow"
-    thead
-      tr
-        th Start at
-        th Developed at
-        th Developed in
-        th Language
-        th Adapt to needs of disabilities
+.row
+  .columns.medium-9
+    table class="hollow"
+      thead
+        tr
+          th Start at
+          th Developed at
+          th Developed in
+          th Language
+          th Adapt to needs of disabilities
 
-    tbody
-      tr
-        td = working_program.start_at
-        td = working_program.developed_at
-        td = working_program.developed_in
-        td = working_program.language
-        td = working_program.adapt_to_needs_of_disabilities
+      tbody
+        tr
+          td = working_program.start_at
+          td = working_program.developed_at
+          td = working_program.developed_in
+          td = working_program.language
+          td = working_program.adapt_to_needs_of_disabilities
 
-.medium-3.columns
-  ul.dropdown.menu data-dropdown-menu=""
-    li
-      a href="#" class="hollow button" Actions with working program
-      ul class="menu"
-        li
-          = link_to "Edit", edit_working_program_path
-        li
-          = link_to "Delete", working_program, data: { confirm: "Are you sure?" }, method: :delete
+  .columns.medium-3
+    ul.dropdown.menu data-dropdown-menu=""
+      li
+        a href="#" class="hollow button" Actions with working program
+        ul class="menu"
+          li
+            = link_to "Edit", edit_working_program_path
+          li
+            = link_to "Delete", working_program, data: { confirm: "Are you sure?" }, method: :delete
+
+.row
+  .columns.medium-2
+    h4 Skills
+  .columns.medium-2.end
+    = link_to "Add skill", new_working_program_skill_path(working_program), class: "hollow button"
+.row
+  .columns.medium-9
+    table class="hollow"
+      thead
+        tr
+          th Name
+          th Level
+          th Edit
+          th Delete
+      tbody
+        - skills.each do |skill|
+          tr
+            td = skill.name
+            td = skill.level
+            td = link_to "Edit", edit_skill_path(skill)
+            td = link_to "Destroy", skill, data: { confirm: "Are you sure?" }, method: :delete

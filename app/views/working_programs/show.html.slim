@@ -27,24 +27,5 @@
           li
             = link_to "Delete", working_program, data: { confirm: "Are you sure?" }, method: :delete
 
-.row
-  .columns.medium-2
-    h4 Skills
-  .columns.medium-2.end
-    = link_to "Add skill", new_working_program_skill_path(working_program), class: "hollow button"
-.row
-  .columns.medium-9
-    table class="hollow"
-      thead
-        tr
-          th Name
-          th Level
-          th Edit
-          th Delete
-      tbody
-        - skills.each do |skill|
-          tr
-            td = skill.name
-            td = skill.level
-            td = link_to "Edit", edit_skill_path(skill)
-            td = link_to "Destroy", skill, data: { confirm: "Are you sure?" }, method: :delete
+= render "skill_list"
+= render "competence_list"

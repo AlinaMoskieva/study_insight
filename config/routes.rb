@@ -3,7 +3,8 @@ Rails.application.routes.draw do
     resources :training_directions, shallow: true do
       resources :disciplines, shallow: true do
         resources :working_programs, shallow: true do
-          resources :skills, shallow: true
+          resources :skills, shallow: true, module: :working_programs
+          resources :competences, shallow: true, module: :working_programs
         end
       end
     end

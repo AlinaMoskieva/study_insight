@@ -1,0 +1,13 @@
+.row
+  .columns
+    h2 Editing Competence
+.row
+  .medium-8.columns
+  = simple_form_for competence do |f|
+    = f.input :cipher, required: true
+    = f.input :description, as: :ckeditor, required: true
+
+    .actions
+      = f.button :submit, class: "hollow button"
+      '
+      = link_to "Back", :back, class: "hollow button"

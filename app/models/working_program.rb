@@ -9,4 +9,5 @@ class WorkingProgram < ApplicationRecord
   belongs_to :discipline
 
   has_many :skills, dependent: :destroy
+  has_many :competences, dependent: :destroy
 end

@@ -1,6 +1,7 @@
 class WorkingProgramsController < ApplicationController
   expose :working_program
   expose :skills, -> { working_program.skills }
+  expose :competences, -> { working_program.competences }
   expose :working_programs, ->{ discipline.working_programs }
 
   expose :discipline

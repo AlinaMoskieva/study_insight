@@ -6,6 +6,7 @@ Rails.application.routes.draw do
           resources :skills, shallow: true, module: :working_programs
           resources :competences, shallow: true, module: :working_programs
           resources :program_modules, shallow: true, module: :working_programs
+          resources :literatures, shallow: true, module: :working_programs
         end
       end
     end

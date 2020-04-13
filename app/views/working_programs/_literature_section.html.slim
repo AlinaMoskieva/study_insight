@@ -1,0 +1,12 @@
+.row
+  .columns.medium-10
+    h4 Literatures
+  .columns.medium-2
+    = link_to "Add a new literature", new_working_program_literature_path(working_program), class: "hollow button"
+.row
+  .columns.medium-12
+    - Literature.resource_types.keys.each do |resource_type|
+      .row
+        h4 = I18n.t("literature.#{resource_type}")
+
+        = render "literature_list", literature: public_send("#{resource_type}_literatures")

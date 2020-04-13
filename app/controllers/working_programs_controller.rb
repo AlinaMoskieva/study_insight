@@ -4,6 +4,9 @@ class WorkingProgramsController < ApplicationController
   expose :skills, -> { working_program.skills }
   expose :competences, -> { working_program.competences }
   expose :program_modules, ->{ working_program.program_modules.order(:number) }
+  expose :required_literatures, ->{ working_program.literatures.required }
+  expose :optional_literatures, ->{ working_program.literatures.optional }
+  expose :web_literatures, ->{ working_program.literatures.web }
 
   expose :working_programs, ->{ discipline.working_programs }
 

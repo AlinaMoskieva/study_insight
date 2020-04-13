@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200411075457) do
+ActiveRecord::Schema.define(version: 20200411082214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 20200411075457) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_educational_institutions_on_name", unique: true
+  end
+
+  create_table "literatures", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "link", default: ""
+    t.string "resource_type", default: "required"
+    t.bigint "working_program_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["working_program_id"], name: "index_literatures_on_working_program_id"
   end
 
   create_table "program_modules", force: :cascade do |t|

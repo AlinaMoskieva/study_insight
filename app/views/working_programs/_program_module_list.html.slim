@@ -8,7 +8,7 @@
     table class="hollow"
       thead
         tr
-          th Number
+          th #
           th Name
           th Description
           th Edit
@@ -16,8 +16,8 @@
       tbody
         - program_modules.each do |program_module|
           tr
-            td = program_module.number
-            td = program_module.name
+            td.program-module__number = program_module.number
+            td.program-module__name = program_module.name
             td = program_module.description.html_safe
-            td = link_to "Edit", edit_program_module_path(program_module)
-            td = link_to "Destroy", program_module, data: { confirm: "Are you sure?" }, method: :delete
+            td.edit_link = link_to "Edit", edit_program_module_path(program_module)
+            td.destroy_link = link_to "Destroy", program_module, data: { confirm: "Are you sure?" }, method: :delete

@@ -16,6 +16,6 @@
         - skills.each do |skill|
           tr
             td = skill.name
-            td = skill.level
-            td = link_to "Edit", edit_skill_path(skill)
-            td = link_to "Destroy", skill, data: { confirm: "Are you sure?" }, method: :delete
+            td.skill__level = skill.level
+            td.edit_link = link_to "Edit", edit_skill_path(skill)
+            td.destroy_link = link_to "Destroy", skill, data: { confirm: "Are you sure?" }, method: :delete

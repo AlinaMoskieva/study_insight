@@ -8,14 +8,14 @@
     table class="hollow"
       thead
         tr
-          th Name
           th Cipher
+          th Description
           th Edit
           th Delete
       tbody
         - competences.each do |competence|
           tr
-            td = competence.cipher
+            td.competence__cipher = competence.cipher
             td = competence.description.html_safe
-            td = link_to "Edit", edit_competence_path(competence)
-            td = link_to "Destroy", competence, data: { confirm: "Are you sure?" }, method: :delete
+            td.edit_link = link_to "Edit", edit_competence_path(competence)
+            td.destroy_link = link_to "Destroy", competence, data: { confirm: "Are you sure?" }, method: :delete

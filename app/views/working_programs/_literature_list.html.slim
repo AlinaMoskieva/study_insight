@@ -10,7 +10,7 @@ table class="hollow"
     - literature.each do |literature|
       tr
         td = literature.name
-        td = literature.link
-        td = literature.resource_type
+        td.literature__link = literature.link
+        td.literature__resource-type = literature.resource_type
         td.edit_link = link_to "Edit", edit_literature_path(literature)
         td.destroy_link = link_to "Destroy", literature, data: { confirm: "Are you sure?" }, method: :delete

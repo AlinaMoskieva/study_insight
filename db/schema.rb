@@ -10,72 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200411082214) do
+ActiveRecord::Schema.define(version: 20200527194216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "competences", force: :cascade do |t|
-    t.string "description", default: "", null: false
-    t.string "cipher", default: "", null: false
-    t.bigint "working_program_id", null: false
+  create_table "curriculums", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.integer "course_number", default: 1, null: false
+    t.bigint "department_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["working_program_id"], name: "index_competences_on_working_program_id"
+    t.index ["department_id"], name: "index_curriculums_on_department_id"
+  end
+
+  create_table "departments", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.bigint "institution_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["institution_id"], name: "index_departments_on_institution_id"
   end
 
   create_table "disciplines", force: :cascade do |t|
     t.string "name", default: "", null: false
-    t.text "description", default: ""
-    t.integer "course_number", default: 1, null: false
-    t.bigint "training_direction_id", null: false
+    t.bigint "curriculum_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["training_direction_id"], name: "index_disciplines_on_training_direction_id"
+    t.index ["curriculum_id"], name: "index_disciplines_on_curriculum_id"
   end
 
-  create_table "educational_institutions", force: :cascade do |t|
+  create_table "institutions", force: :cascade do |t|
     t.string "name", default: "", null: false
+    t.string "description", default: ""
+    t.bigint "university_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_educational_institutions_on_name", unique: true
+    t.index ["university_id"], name: "index_institutions_on_university_id"
   end
 
-  create_table "literatures", force: :cascade do |t|
+  create_table "universities", force: :cascade do |t|
     t.string "name", default: "", null: false
-    t.string "link", default: ""
-    t.string "resource_type", default: "required"
-    t.bigint "working_program_id", null: false
+    t.string "description", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["working_program_id"], name: "index_literatures_on_working_program_id"
-  end
-
-  create_table "program_modules", force: :cascade do |t|
-    t.string "name", default: "", null: false
-    t.string "description", default: "", null: false
-    t.integer "number", default: 1
-    t.bigint "working_program_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["working_program_id"], name: "index_program_modules_on_working_program_id"
-  end
-
-  create_table "skills", force: :cascade do |t|
-    t.string "name", default: "", null: false
-    t.string "level", default: "", null: false
-    t.bigint "working_program_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["working_program_id"], name: "index_skills_on_working_program_id"
-  end
-
-  create_table "training_directions", force: :cascade do |t|
-    t.string "name", default: "", null: false
-    t.bigint "educational_institution_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["educational_institution_id"], name: "index_training_directions_on_educational_institution_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -103,18 +81,6 @@ ActiveRecord::Schema.define(version: 20200411082214) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
-  end
-
-  create_table "working_programs", force: :cascade do |t|
-    t.date "start_at", null: false
-    t.date "developed_at", null: false
-    t.string "developed_in", null: false
-    t.string "language", default: "", null: false
-    t.string "adapt_to_needs_of_disabilities", default: "", null: false
-    t.bigint "discipline_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["discipline_id"], name: "index_working_programs_on_discipline_id"
   end
 
 end

@@ -1,0 +1,12 @@
+.row
+  .medium-8.columns
+    h2 Создание направления
+
+    = simple_form_for [institution, department] do |f|
+      = f.input :name, required: true
+
+      .actions
+        = f.button :submit, "Создать напраление",class: "hollow button"
+        '
+        = link_to "Назад", :back, class: "hollow button"
+

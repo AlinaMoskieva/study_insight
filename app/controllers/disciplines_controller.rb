@@ -1,14 +1,12 @@
 class DisciplinesController < ApplicationController
-  expose_decorated :discipline
-  expose :disciplines, ->{ specialitiy.discipline }
+  expose :discipline
+  expose :disciplines, -> { curriculum.disciplines }
 
-  expose :training_direction
+  expose :curriculum
 
   def create
-    discipline.training_direction = training_direction
-
     if discipline.save
-      redirect_to discipline, notice: "Discipline was successfully created."
+      redirect_to discipline, notice: "Дисциплина был успешно создан"
     else
       render :new
     end
@@ -16,7 +14,7 @@ class DisciplinesController < ApplicationController
 
   def update
     if discipline.update(discipline_params)
-      redirect_to discipline, notice: "Discipline was successfully updated."
+      redirect_to discipline, notice: "Дисциплина был успешно обновлен"
     else
       render :edit
     end
@@ -24,12 +22,12 @@ class DisciplinesController < ApplicationController
 
   def destroy
     discipline.destroy
-    redirect_to discipline.training_direction, notice: "Discipline was successfully destroyed."
+    redirect_to disciplines_url, notice: "Дисциплина был успешно удален"
   end
 
   private
 
   def discipline_params
-    params.require(:discipline).permit(:name, :description, :course_number)
+    params.require(:discipline).permit(:name, :course_number)
   end
 end

@@ -8,6 +8,7 @@
 #= require jquery-ujs
 #= require foundation
 #= require current_user
+#= require hidden_form
 #= require_tree ./ckeditor
 #= require_tree ../templates
 

@@ -8,3 +8,4 @@ class User
     @get("id")?
 
 App.currentUser = new User(App.currentUserData)
+ 

@@ -6,6 +6,8 @@ class CurriculumsController < ApplicationController
   expose :disciplines, -> { curriculum.disciplines }
 
   def create
+    curriculum.department = department
+
     if curriculum.save
       redirect_to curriculum, notice: "Учебный план был успешно создан"
     else
@@ -23,7 +25,7 @@ class CurriculumsController < ApplicationController
 
   def destroy
     curriculum.destroy
-    redirect_to curriculums_url, notice: "Учебный план был успешно удален"
+    redirect_to curriculum.department, notice: "Учебный план был успешно удален"
   end
 
   private

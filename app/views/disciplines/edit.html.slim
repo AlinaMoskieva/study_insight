@@ -1,0 +1,12 @@
+.row
+  .medium-8.columns
+    h2 Редактирование дисциплины
+
+    = simple_form_for [discipline] do |f|
+      = f.input :name, required: true
+
+      .actions
+        = f.button :submit, "Обновить дисциплину",class: "hollow button"
+        '
+        = link_to "Назад", :back, class: "hollow button"
+

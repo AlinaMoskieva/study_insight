@@ -1,0 +1,12 @@
+.row
+  .medium-8.columns
+    h2 Создание дисциплины
+
+    = simple_form_for [curriculum, discipline] do |f|
+      = f.input :name, required: true
+
+      .actions
+        = f.button :submit, "Создать дисциплину",class: "hollow button"
+        '
+        = link_to "Назад", :back, class: "hollow button"
+

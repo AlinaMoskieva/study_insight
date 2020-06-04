@@ -1,0 +1,13 @@
+.row
+  .medium-8.columns
+    h2 Создание учебного плана
+
+    = simple_form_for [department, curriculum] do |f|
+      = f.input :name, required: true
+      = f.input :course_number, required: true
+
+      .actions
+        = f.button :submit, "Создать учебный план",class: "hollow button"
+        '
+        = link_to "Назад", :back, class: "hollow button"
+

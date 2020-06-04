@@ -1,0 +1,31 @@
+.row
+  .medium-7.columns
+    h3 #{discipline.name}
+  
+  .medium-2.columns
+    ul.dropdown.menu data-dropdown-menu=""
+      li
+        a href="#" class="hollow button" Действия
+        ul class="menu"
+          li
+            = link_to "Редактирование", edit_discipline_path(discipline)
+          li
+            = link_to "Вернутся к учебному плану", curriculum_path(discipline.curriculum)
+.row
+  .medium-8.columns
+    h4 Учебный план
+    table class="hollow"
+      thead
+        tr
+          th Название
+          th Редактирование
+          th Удаление
+
+    /   tbody
+    /     - disciplines.each do |discipline|
+    /       tr
+    /         td = link_to discipline.name, discipline
+    /         td = link_to "Редактирвоание", edit_discipline_path(discipline)
+    /         td = link_to "Удаление", discipline, data: { confirm: "Вы уверены?" }, method: :delete
+
+    / = link_to "Создать дисциплину", new_curriculum_discipline_path(curriculum), class: "hollow button"

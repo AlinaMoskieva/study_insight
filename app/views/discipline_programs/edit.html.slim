@@ -1,0 +1,14 @@
+.row
+  .medium-8.columns
+    h2 Редактирование рабочую программу дисциплины
+
+    = simple_form_for [discipline_program] do |f|
+      = f.input :name, required: true
+      = f.input :description, as: :text, required: true
+      = f.input :year, required: true
+
+      .actions
+        = f.button :submit, "Обновить рабочую программу дисциплины",class: "hollow button"
+        '
+        = link_to "Назад", :back, class: "hollow button"
+

@@ -1,6 +1,7 @@
 class DisciplinesController < ApplicationController
   expose :discipline
   expose :disciplines, -> { curriculum.disciplines }
+  expose :discipline_program, ->{ discipline.discipline_program }
 
   expose :curriculum
 

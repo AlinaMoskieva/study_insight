@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200527194216) do
+ActiveRecord::Schema.define(version: 20200604203734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20200527194216) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["institution_id"], name: "index_departments_on_institution_id"
+  end
+
+  create_table "discipline_programs", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "year", null: false
+    t.string "description", null: false
+    t.bigint "discipline_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["discipline_id"], name: "index_discipline_programs_on_discipline_id"
   end
 
   create_table "disciplines", force: :cascade do |t|

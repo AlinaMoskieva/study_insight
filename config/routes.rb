@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     resources :institutions, shallow: true do
       resources :departments, shallow: true do
         resources :curriculums, shallow: true do
-          resources :disciplines, shallow: true
+          resources :disciplines, shallow: true do
+            resources :discipline_programs, shallow: true
+          end
         end
       end
     end

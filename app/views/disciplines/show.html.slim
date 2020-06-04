@@ -13,13 +13,10 @@
             = link_to "Вернутся к учебному плану", curriculum_path(discipline.curriculum)
 .row
   .medium-8.columns
-    h4 Учебный план
-    table class="hollow"
-      thead
-        tr
-          th Название
-          th Редактирование
-          th Удаление
+    - if discipline_program
+      = link_to "Рабочая программа дисциплины", discipline_program
+    - else
+      = link_to "Создать программу дисциплину", new_discipline_discipline_program_path(discipline), class: "hollow button"
 
     /   tbody
     /     - disciplines.each do |discipline|

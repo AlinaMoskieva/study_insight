@@ -2,11 +2,13 @@
   .medium-8.columns
     h2 Cоздать рабочую программу дисциплины
 
-    = simple_form_for [discipline, discipline_program] do |f|
+    = simple_nested_form_for [discipline, discipline_program] do |f|
       = f.input :name, required: true
       = f.input :description, as: :text, required: true
       = f.input :year, required: true
 
+      = render "custom_sections/form", f: f
+      
       .actions
         = f.button :submit, "Создать рабочую программу дисциплины",class: "hollow button"
         '

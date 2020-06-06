@@ -8,7 +8,7 @@ class DisciplineProgramsController < ApplicationController
     discipline_program.discipline = discipline
 
     if discipline_program.save
-      redirect_to discipline_program, notice: "Дисциплина был успешно созданa"
+      redirect_to discipline_program, notice: "Программа дисциплины была успешно созданa"
     else
       render :new
     end
@@ -16,7 +16,7 @@ class DisciplineProgramsController < ApplicationController
 
   def update
     if discipline_program.update(discipline_program_params)
-      redirect_to discipline_program, notice: "Дисциплина был успешно обновленa"
+      redirect_to discipline_program, notice: "Программа дисциплины была успешно обновленa"
     else
       render :edit
     end
@@ -24,7 +24,7 @@ class DisciplineProgramsController < ApplicationController
 
   def destroy
     discipline_program.destroy
-    redirect_to discipline_program.discipline, notice: "Дисциплина был успешно удаленa"
+    redirect_to discipline_program.discipline, notice: "Программа дисциплины была успешно удаленa"
   end
 
   private

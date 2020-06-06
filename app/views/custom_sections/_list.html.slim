@@ -5,25 +5,34 @@
       h4 #{custom_section.name}
       table.hover
         tbody
-          / tr
-          /   th(width="150") Название
-          /   td = custom_section.name
           tr
             th(width="150") Описание
             td = custom_section.value
+          - custom_section.custom_attributes.each do |attribute|
+            tr.custom_attribute
+              th(width="150") = attribute.name
+              td = attribute.value
+
       - if custom_section.custom_section_units.any?
-        .callout
           h4  Единицы раздела
-          table.hover
-            thead
-              tr
-                th(width="20") #
-                th(width="150") Название
-                th(width="150") Описание
-            tbody
-              - custom_section.custom_section_units.each_with_index do |unit, index|
-                tr
-                  td = index + 1
-                  td = unit.name
-                  td = unit.value
-              
+          - custom_section.custom_section_units.each_with_index do |unit, index|
+            .callout.custom_section
+              table.hover
+                thead
+                  tr
+                    th(width="20") #
+                    th(width="130") Название
+                    th Описание
+                    - 
+                tbody
+                  tr
+                    td = index + 1
+                    td = unit.name
+                    td = unit.value
+              - unit.custom_attributes.any?
+                table.hover
+                  tbody
+                    - unit.custom_attributes.each do |attribute|
+                      tr.custom_attribute
+                        th(width="150") = attribute.name
+                        td = attribute.value

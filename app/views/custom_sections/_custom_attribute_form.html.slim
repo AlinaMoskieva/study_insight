@@ -1,0 +1,10 @@
+= f.fields_for :custom_attributes do |ca|
+  - decorator = CustomFieldDecorator.new(ca.object)
+  .callout.warning
+    h5 #{decorator.custom_attribute_title}
+    = ca.input :name, label: "Название", required: true
+    = ca.input :value, as: :text, label: "Значение", required: true
+    = ca.link_to_remove "Удалить дополнительный атрибут"
+
+= f.link_to_add "Добавить дополнительный атрибут", :custom_attributes
+br

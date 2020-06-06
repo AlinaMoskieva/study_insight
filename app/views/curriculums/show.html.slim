@@ -1,7 +1,6 @@
 .row
   .medium-7.columns
-    h3 #{curriculum.name}
-    p Программа курса: #{curriculum.course_number}
+    h3 Учебный план
   
   .medium-2.columns
     ul.dropdown.menu data-dropdown-menu=""
@@ -12,6 +11,21 @@
             = link_to "Редактирование", edit_curriculum_path(curriculum)
           li
             = link_to "Вернутся к направлению", department_path(curriculum.department)
+.row
+ .medium-10.columns
+    h4 1. Общая информация
+    
+    table.hover
+      tbody
+        tr
+          th(width="150") Название УП
+          td = curriculum.name
+        tr
+          th(width="150") Номер курса
+          td = curriculum.course_number
+.row
+  .medium-10.columns
+    = render "custom_sections/list", custom_sections: custom_sections
 .row
   .medium-8.columns
     h4 Дисциплины (#{disciplines.count})

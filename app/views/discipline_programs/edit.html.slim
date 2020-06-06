@@ -7,9 +7,8 @@
       = f.input :description, as: :text, required: true
       = f.input :year, required: true
 
-      h4 Редактированть дополнительные разделы (#{discipline_program.custom_sections.count})
+      h4 Редактировать дополнительные разделы (#{discipline_program.custom_sections.count})
       = render "custom_sections/form", f: f
-
 
       .actions
         = f.button :submit, "Обновить рабочую программу дисциплины",class: "hollow button"

@@ -4,6 +4,7 @@ class CurriculumsController < ApplicationController
 
   expose :department
   expose :disciplines, -> { curriculum.disciplines }
+  expose :custom_sections, -> { curriculum.custom_sections }
 
   def create
     curriculum.department = department
@@ -31,6 +32,6 @@ class CurriculumsController < ApplicationController
   private
 
   def curriculum_params
-    params.require(:curriculum).permit(:name, :course_number)
+    params.require(:curriculum).permit(:name, :course_number, custom_sections_attributes: [:id, :name, :value, :_destroy])
   end
 end

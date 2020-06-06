@@ -2,9 +2,12 @@
   .medium-8.columns
     h2 Редактирование учебного плана
 
-    = simple_form_for [curriculum] do |f|
+    = simple_nested_form_for [curriculum] do |f|
       = f.input :name, required: true
       = f.input :course_number, required: true
+
+      h4 Редактировать дополнительные разделы (#{curriculum.custom_sections.count})
+      = render "custom_sections/form", f: f
 
       .actions
         = f.button :submit, "Обновить учебный план",class: "hollow button"

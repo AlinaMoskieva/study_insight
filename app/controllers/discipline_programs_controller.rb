@@ -1,6 +1,7 @@
 class DisciplineProgramsController < ApplicationController
   expose :discipline_program
   expose :discipline_programs, -> { discipline.discipline_programs }
+  expose :custom_sections, -> { discipline_program.custom_sections.order(:id) }
 
   expose :discipline
 

@@ -1,0 +1,13 @@
+- if custom_sections.any?
+  h4 2. Дополнительные разделы
+  - custom_sections.each do |custom_sectiom|
+    .callout
+      table.hover
+        tbody
+          tr
+            th(width="150") Название
+            td = custom_sectiom.name
+          tr
+            th(width="150") Описание
+            td = custom_sectiom.value
+          

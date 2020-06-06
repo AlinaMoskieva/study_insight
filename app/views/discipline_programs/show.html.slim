@@ -1,8 +1,6 @@
 .row
-  .medium-7.columns
-    h3 #{discipline_program.name}
-    h5 #{discipline_program.year} год
-  
+  .medium-9.columns
+    h3 Рабочая программа #{discipline_program.discipline.name} (#{discipline_program.year} год)
   .medium-2.columns
     ul.dropdown.menu data-dropdown-menu=""
       li
@@ -13,6 +11,20 @@
           li
             = link_to "Вернутся к дисциплине", discipline_path(discipline_program.discipline)
 .row
-  .medium-7.columns
-    h3 Описание
-    p= discipline_program.description
+  .medium-10.columns
+    h4 1. Общая информация
+    
+    table.hover
+      tbody
+        tr
+          th(width="150") Название РПД
+          td = discipline_program.name
+        tr
+          th(width="150") Описание
+          td = discipline_program.description
+        tr
+          th(width="150") Год
+          td = discipline_program.year
+.row
+  .medium-10.columns
+    = render "custom_sections/list", custom_sections: custom_sections

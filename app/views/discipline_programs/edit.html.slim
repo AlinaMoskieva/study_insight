@@ -1,11 +1,23 @@
 .row
-  .medium-8.columns
+  .medium-10.columns
     h2 Редактирование рабочую программу дисциплины
 
-    = simple_form_for [discipline_program] do |f|
+    = simple_nested_form_for discipline_program do |f|
       = f.input :name, required: true
       = f.input :description, as: :text, required: true
       = f.input :year, required: true
+
+      h4 Редактированть дополнительные разделы (#{discipline_program.custom_sections.count})
+      = f.fields_for :custom_sections do |cs|
+        - decorator = CustomFieldDecorator.new(cs.object)
+        .callout.secondary
+          h5 #{decorator.title}
+          = cs.input :name, label: "Название", required: true
+          = cs.input :value, as: :text, label: "Значение", required: true
+          = cs.link_to_remove "Удалить дополнительный раздел"
+
+      = f.link_to_add "Добавить дополнительный раздел", :custom_sections
+
 
       .actions
         = f.button :submit, "Обновить рабочую программу дисциплины",class: "hollow button"

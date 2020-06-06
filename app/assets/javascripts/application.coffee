@@ -6,6 +6,7 @@
 #
 #= require jquery2
 #= require jquery-ujs
+#= require jquery_nested_form
 #= require foundation
 #= require current_user
 #= require hidden_form

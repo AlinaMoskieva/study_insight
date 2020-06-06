@@ -25,6 +25,7 @@ gem "inky-rb", require: "inky"
 gem "meta-tags"
 gem "simple_form"
 gem "slim"
+gem "nested_form"
 
 # all other gems
 gem "decent_decoration"

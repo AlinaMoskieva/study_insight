@@ -30,6 +30,6 @@ class DisciplineProgramsController < ApplicationController
   private
 
   def discipline_program_params
-    params.require(:discipline_program).permit(:name, :year, :description)
+    params.require(:discipline_program).permit(:name, :description, :year, custom_sections_attributes: [:id, :name, :value, :_destroy])
   end
 end

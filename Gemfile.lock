@@ -230,6 +230,7 @@ GEM
     minitest (5.12.2)
     multi_json (1.12.1)
     nenv (0.3.0)
+    nested_form (0.3.2)
     newrelic_rpm (3.18.1.330)
     nio4r (2.3.1)
     nokogiri (1.10.8)
@@ -475,6 +476,7 @@ DEPENDENCIES
   letter_opener
   memory_profiler
   meta-tags
+  nested_form
   newrelic_rpm
   pg
   poltergeist

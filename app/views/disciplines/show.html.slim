@@ -17,12 +17,3 @@
       = link_to "Рабочая программа дисциплины", discipline_program
     - else
       = link_to "Создать программу дисциплину", new_discipline_discipline_program_path(discipline), class: "hollow button"
-
-    /   tbody
-    /     - disciplines.each do |discipline|
-    /       tr
-    /         td = link_to discipline.name, discipline
-    /         td = link_to "Редактирвоание", edit_discipline_path(discipline)
-    /         td = link_to "Удаление", discipline, data: { confirm: "Вы уверены?" }, method: :delete
-
-    / = link_to "Создать дисциплину", new_curriculum_discipline_path(curriculum), class: "hollow button"

@@ -32,6 +32,13 @@ class CurriculumsController < ApplicationController
   private
 
   def curriculum_params
-    params.require(:curriculum).permit(:name, :course_number, custom_sections_attributes: [:id, :name, :value, :_destroy])
+    params.require(:curriculum).permit(:name, :course_number, 
+      custom_sections_attributes: [:id, :name, :value, :_destroy,
+        custom_section_units_attributes: [:id, :name, :value, :_destroy,
+          custom_attributes_attributes: [:id, :name, :value, :_destroy]
+        ],
+        custom_attributes_attributes: [:id, :name, :value, :_destroy]
+      ]
+    )
   end
 end

@@ -1,0 +1,7 @@
+- custom_attributes.any?
+    table.hover
+      tbody
+        - custom_attributes.each do |attribute|
+          tr.custom_attribute
+            th(width="150") = attribute.name
+            td = attribute.value

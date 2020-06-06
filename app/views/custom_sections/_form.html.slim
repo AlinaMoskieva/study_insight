@@ -1,9 +1,20 @@
 = f.fields_for :custom_sections do |cs|
   - decorator = CustomFieldDecorator.new(cs.object)
   .callout.secondary
-    h5 #{decorator.title}
+    h5 #{decorator.custom_section_title}
     = cs.input :name, label: "Название", required: true
     = cs.input :value, as: :text, label: "Значение", required: true
     = cs.link_to_remove "Удалить дополнительный раздел"
+
+    = cs.fields_for :custom_section_units do |csu|
+      - decorator = CustomFieldDecorator.new(csu.object)
+      .callout.primary
+        h5 #{decorator.custom_section_unit_title}
+        = csu.input :name, label: "Название", required: true
+        = csu.input :value, as: :text, label: "Значение", required: true
+        = csu.link_to_remove "Удалить дополнительную единицу раздела"
+        br
+
+    = cs.link_to_add "Добавить дополнительную единицу раздела", :custom_section_units
 
 = f.link_to_add "Добавить дополнительный раздел", :custom_sections

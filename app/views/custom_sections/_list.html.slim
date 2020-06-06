@@ -1,13 +1,29 @@
 - if custom_sections.any?
   h4 2. Дополнительные разделы (#{custom_sections.count})
-  - custom_sections.each do |custom_sectiom|
-    .callout
+  - custom_sections.each do |custom_section|
+    .callout.primary
+      h4 #{custom_section.name}
       table.hover
         tbody
-          tr
-            th(width="150") Название
-            td = custom_sectiom.name
+          / tr
+          /   th(width="150") Название
+          /   td = custom_section.name
           tr
             th(width="150") Описание
-            td = custom_sectiom.value
-          
+            td = custom_section.value
+      - if custom_section.custom_section_units.any?
+        .callout
+          h4  Единицы раздела
+          table.hover
+            thead
+              tr
+                th(width="20") #
+                th(width="150") Название
+                th(width="150") Описание
+            tbody
+              - custom_section.custom_section_units.each_with_index do |unit, index|
+                tr
+                  td = index + 1
+                  td = unit.name
+                  td = unit.value
+              

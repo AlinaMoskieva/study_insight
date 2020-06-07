@@ -28,6 +28,7 @@ gem "slim"
 gem "nested_form"
 
 # all other gems
+gem "amatch"
 gem "decent_decoration"
 gem "decent_exposure"
 gem "devise"

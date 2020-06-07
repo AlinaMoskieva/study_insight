@@ -12,13 +12,14 @@
           li
             = link_to "Вернутся к институту", institution_path(department.institution)
 .row
-  .medium-8.columns
+  .medium-10.columns
     h4 Учебные планы (#{curriculumns.count})
     table class="hollow"
       thead
         tr
           th Название
           th Год обучения
+          th Ретроспективный анализ
           th Редактирование
           th Удаление
 
@@ -27,6 +28,14 @@
           tr
             td = link_to curriculum.name, curriculum
             td = curriculum.year
+            td
+              ul#primary-menu.dropdown.menu data-dropdown-menu="" 
+                li
+                  a href="#" Сравнить с
+                  ul.menu
+                    - (curriculumns.to_a - [curriculum]).each do |compare_with|
+                      li
+                        = link_to compare_with.year, department_retrospective_analytics_path(department, compare_with: compare_with.id, target: curriculum.id)
             td = link_to "Редактирвоание", edit_curriculum_path(curriculum)
             td = link_to "Удаление", curriculum, data: { confirm: "Вы уверены?" }, method: :delete
 

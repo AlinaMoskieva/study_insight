@@ -5,6 +5,8 @@ class CurriculumsController < ApplicationController
   expose :department
   expose :disciplines, -> { curriculum.disciplines }
   expose :custom_sections, -> { curriculum.custom_sections }
+  expose :custom_attributes, -> { curriculum.custom_attributes }
+  
 
   def create
     curriculum.department = department
@@ -38,7 +40,8 @@ class CurriculumsController < ApplicationController
           custom_attributes_attributes: [:id, :name, :value, :_destroy]
         ],
         custom_attributes_attributes: [:id, :name, :value, :_destroy]
-      ]
+      ],
+      custom_attributes_attributes: [:id, :name, :value, :_destroy]
     )
   end
 end

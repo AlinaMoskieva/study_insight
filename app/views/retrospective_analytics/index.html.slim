@@ -1,0 +1,75 @@
+.row
+  .medium-12.columns
+    h2 Ретроспективный анализ
+.row
+  .medium-12.columns
+    table
+      thead
+        tr
+          th(width="150px") Параметры сравнения
+          th(width="48%")
+            .text-centered
+              = link_to curriculum.name, curriculum
+          th(width="48%")
+            .text-centered
+              = link_to old_curriculum.name, old_curriculum
+      tbody
+        tr
+          td.text-centered.primary_colored colspan="3" 1. Общая информация
+        tr
+          td Год
+          td = curriculum.year
+          td = old_curriculum.year
+        tr
+          td.text-centered.primary_colored colspan="3" 2. Сравнение структуры
+        tr
+          td.text-centered.colored colspan="3" Сравнение дополнительных атрибутов
+        tr
+          td Общие атрибуты
+          td colspan="2"
+            - custom_attributes_diff.similar.each_with_index do |attr, index| 
+              .callout.primary
+                table
+                  tbody
+                    tr
+                      td colspan="3" ##{index+1}
+                    tr
+                      td Название
+                      td #{attr.name}
+                    tr
+                      td Процент схожести
+                      td #{attr.similar_percentage}
+        tr
+          td Отличающиеся атрибуты
+          td
+            h6 Количество отличающихся атрибутов (#{custom_attributes_diff.missed_in_target.count})
+            - custom_attributes_diff.missed_in_target.each_with_index do |attr, index|
+              .callout
+                table
+                  tbody
+                    tr
+                      td colspan="3" ##{index+1}
+                    tr
+                      td Название
+                      td #{attr.name}
+                    tr
+                      td Значение
+                      td #{index + 1}. #{attr.name}
+          td
+            h6 Количество отличающихся атрибутов (#{custom_attributes_diff.missed_in_compare_with.count})
+            - custom_attributes_diff.missed_in_compare_with.each_with_index do |attr, index|
+                .callout
+                  table
+                    tbody
+                      tr
+                        td colspan="3" ##{index+1}
+                      tr
+                        td Название
+                        td #{attr.name}
+                      tr
+                        td Значение
+                        td #{index + 1}. #{attr.name}
+            
+        
+        
+        

@@ -3,7 +3,7 @@ class DepartmentsController < ApplicationController
   expose :departments, -> { institution.departments }
 
   expose :institution
-  expose :curriculumns, -> { department.curriculums }
+  expose :curriculumns, -> { department.curriculums.order(year: :desc) }
 
   def create
     department.institution = institution

@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 20200607102324) do
 
   create_table "curriculums", force: :cascade do |t|
     t.string "name", default: "", null: false
-    t.integer "course_number", default: 1, null: false
     t.bigint "department_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -4,7 +4,7 @@
 
     = simple_nested_form_for [curriculum] do |f|
       = f.input :name, required: true
-      = f.input :course_number, required: true
+      = f.input :year, required: true
 
       h4 Редактировать дополнительные атрибуты (#{curriculum.custom_attributes.count})
       = render "custom_sections/custom_attribute_form", f: f

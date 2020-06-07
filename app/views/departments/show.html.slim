@@ -18,6 +18,7 @@
       thead
         tr
           th Название
+          th Год обучения
           th Редактирование
           th Удаление
 
@@ -25,6 +26,7 @@
         - curriculumns.each do |curriculum|
           tr
             td = link_to curriculum.name, curriculum
+            td = curriculum.year
             td = link_to "Редактирвоание", edit_curriculum_path(curriculum)
             td = link_to "Удаление", curriculum, data: { confirm: "Вы уверены?" }, method: :delete
 

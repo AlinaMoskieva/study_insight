@@ -24,9 +24,13 @@ class CustomAttributesComparator
         target: target_attr,
         comare_with: cw_attribute,
         similar_percentage: target_attr.value.damerau_levenshtein_similar(cw_attribute.value),
-        diff: {}
+        diff: diff(cw_attribute.value, target_attr.value)
       })
     end
+  end
+
+  def diff(string_1, string_2)
+     Differ.diff_by_word(string_1, string_2).format_as(:html)
   end
 
   def missed_attributes_in_compare_with

@@ -34,11 +34,15 @@
                     tr
                       td colspan="3" ##{index+1}
                     tr
-                      td Название
+                      td(width="150px") Название
                       td #{attr.name}
                     tr
-                      td Процент схожести
+                      td(width="150px") Процент схожести
                       td #{attr.similar_percentage}
+                    tr
+                      td(width="150px") Различия
+                      td.diff
+                        = attr.diff.html_safe
         tr
           td Отличающиеся атрибуты
           td

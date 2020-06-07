@@ -1,0 +1,49 @@
+tr
+  td Общие атрибуты
+  td colspan="2"
+    - custom_attributes_diff.similar.each_with_index do |attr, index| 
+      .callout.primary
+        table
+          tbody
+            tr
+              td colspan="3" ##{index + 1}
+            tr
+              td(width="150px") Название
+              td #{attr.name}
+            tr
+              td(width="150px") Процент схожести
+              td #{attr.similar_percentage}
+            tr
+              td(width="150px") Различия
+              td.diff
+                = attr.diff.html_safe
+  tr
+    td Отличающиеся атрибуты
+    td
+      h6 Количество отличающихся атрибутов (#{custom_attributes_diff.missed_in_target.count})
+      - custom_attributes_diff.missed_in_target.each_with_index do |attr, index|
+        .callout
+          table
+            tbody
+              tr
+                td colspan="3" ##{index+1}
+              tr
+                td Название
+                td #{attr.name}
+              tr
+                td Значение
+                td #{index + 1}. #{attr.name}
+    td
+      h6 Количество отличающихся атрибутов (#{custom_attributes_diff.missed_in_compare_with.count})
+      - custom_attributes_diff.missed_in_compare_with.each_with_index do |attr, index|
+          .callout
+            table
+              tbody
+                tr
+                  td colspan="3" ##{index+1}
+                tr
+                  td Название
+                  td #{attr.name}
+                tr
+                  td Значение
+                  td #{index + 1}. #{attr.name}

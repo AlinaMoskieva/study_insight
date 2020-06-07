@@ -1,9 +1,8 @@
-
 tr
-  td Анализ общих атрибутов
+  td Анализ общих cекций
   td colspan="2"
-    - if custom_attributes_diff.similar.any?
-      - custom_attributes_diff.similar.each_with_index do |attr, index| 
+    - if custom_sections_diff.similar.any?
+      - custom_sections_diff.similar.each_with_index do |attr, index| 
         .callout.primary
           table
             tbody
@@ -19,14 +18,24 @@ tr
                 td(width="150px") Текст с выделенными различиями
                 td.diff
                   = attr.diff.html_safe
+          h5 Анализ ассоциаций 
+          h6 1. Дополнительные разделы секции
+          = render "custom_section_unit_diff", differ: attr.association_units, tu: attr.target.custom_section_units, cwu: attr.comare_with.custom_section_units 
+          h6 2. Дополнительные атрибуты секции
+          table
+            = render "custom_attribute_diff", custom_attributes_diff: attr.association_attributes
+          
     - else
       p.text-centered
-        = "Нет общих атрибутов"
+        = "Нет общих секций"
+
+  
+  
   tr
-    td Отличающиеся атрибуты
+    td Отличающиеся секции
     td
-      h6 Количество отличающихся атрибутов (#{custom_attributes_diff.missed_in_target.count})
-      - custom_attributes_diff.missed_in_target.each_with_index do |attr, index|
+      h6 Количество отличающихся секций (#{custom_sections_diff.missed_in_target.count})
+      - custom_sections_diff.missed_in_target.each_with_index do |attr, index|
         .callout
           table
             tbody
@@ -39,8 +48,8 @@ tr
                 td Значение
                 td #{index + 1}. #{attr.name}
     td
-      h6 Количество отличающихся атрибутов (#{custom_attributes_diff.missed_in_compare_with.count})
-      - custom_attributes_diff.missed_in_compare_with.each_with_index do |attr, index|
+      h6 Количество отличающихся секций (#{custom_sections_diff.missed_in_compare_with.count})
+      - custom_sections_diff.missed_in_compare_with.each_with_index do |attr, index|
           .callout
             table
               tbody

@@ -1,6 +1,6 @@
 .row
   .medium-12.columns
-    h2 Ретроспективный анализ
+    h2.text-centered Ретроспективный анализ учебного плана
 .row
   .medium-12.columns
     table
@@ -21,11 +21,14 @@
           td = curriculum.year
           td = old_curriculum.year
         tr
-          td.text-centered.primary_colored colspan="3" 2. Сравнение структуры
+          td.text-centered.primary_colored colspan="3" 2. Анализ структуры
         tr
-          td.text-centered.colored colspan="3" Сравнение дополнительных атрибутов
+          td.text-centered.colored colspan="3" 2.1. Анализ дополнительных атрибутов
         = render "custom_attribute_diff", custom_attributes_diff: custom_attributes_diff
-                  
+        tr
+          td.text-centered.colored colspan="3" 2.2. Анализ дополнительных секций
+        = render "custom_section_diff", custom_sections_diff: custom_sections_diff
+              
         
         
         

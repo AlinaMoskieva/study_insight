@@ -17,7 +17,7 @@
                 td(width="150px") Текст с выделенными различиями
                 td.diff
                   = attribute.diff.html_safe
-          h6 Анализ ассоциаций
+          h5 Анализ ассоциаций
           table
             = render "custom_attribute_diff", custom_attributes_diff: attribute.association_attributes
     - else

@@ -18,10 +18,10 @@ tr
                 td(width="150px") Текст с выделенными различиями
                 td.diff
                   = attr.diff.html_safe
-          h5 Анализ ассоциаций 
-          h6 1. Дополнительные разделы секции
+          h4 Анализ ассоциаций 
+          h5 1. Дополнительные разделы секции
           = render "custom_section_unit_diff", differ: attr.association_units, tu: attr.target.custom_section_units, cwu: attr.comare_with.custom_section_units 
-          h6 2. Дополнительные атрибуты секции
+          h5 2. Дополнительные атрибуты секции
           table
             = render "custom_attribute_diff", custom_attributes_diff: attr.association_attributes
           

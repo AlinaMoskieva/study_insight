@@ -12,12 +12,15 @@
         tr
           td(width="150px") Описание с выделенными различиями
           td.diff colspan="2" = differ.description_compare.diff.html_safe
-  h5 Анализ ассоциаций
-  h6 1. Анализ дополнительных атрибутов
+        tr
+          td(width="150px") Процент схожести всего контента РПД
+          td colspan="2" = differ.whole_content_change
+  h4 Анализ ассоциаций
+  h5 1. Анализ дополнительных атрибутов
   .callout
     table
       = render "custom_attribute_diff", custom_attributes_diff: differ.associations_compare.custom_attributes
-  h6 2. Анализ дополнительных разделов
+  h5 2. Анализ дополнительных разделов
   .callout
     table
       = render "custom_section_diff", custom_sections_diff: differ.associations_compare.custom_sections

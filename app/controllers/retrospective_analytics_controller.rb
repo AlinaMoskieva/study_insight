@@ -4,7 +4,7 @@ class RetrospectiveAnalyticsController < ApplicationController
   expose :old_curriculum, -> { department.curriculums.find(params[:compare_with]) }
   expose :custom_attributes_diff, -> { custom_attributes_diff }
   expose :custom_sections_diff, -> { custom_sections_diff }
-
+  expose :disciplines_diff, -> { disciplines_diff }
 
   def index
 
@@ -18,5 +18,9 @@ class RetrospectiveAnalyticsController < ApplicationController
 
   def custom_sections_diff
     CustomSectionsComparator.new(target: curriculum, compare_with: old_curriculum).call
+  end
+
+  def disciplines_diff
+    DisciplinesComparator.new(target: curriculum, compare_with: old_curriculum).call
   end
 end

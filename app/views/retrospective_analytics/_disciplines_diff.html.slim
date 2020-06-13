@@ -1,0 +1,52 @@
+tr
+  td Анализ общих дисциплин
+  td colspan="2"
+    .callout
+      - if differ.similar.any?
+        - differ.similar.each_with_index do |attribute, index| 
+          .callout.primary
+            table
+              tbody
+                tr
+                  td colspan="3" ##{index + 1}
+                tr
+                  td(width="150px") Название
+                  td #{attribute.name}
+            h5 Анализ ассоциаций
+            h6 1. Дополнительные атрибуты
+            table
+              = render "custom_attribute_diff", custom_attributes_diff: attribute.association_attributes
+            h6 2. Рабочие программы дисциплин
+      - else
+        p.text-centered
+          = "Нет общих дисциплин"
+  table
+    td(width="150px") Отличающиеся дисциплины
+    td
+      h6 Количество отличающихся дисциплин (#{differ.missed_in_target.count})
+      - differ.missed_in_target.each_with_index do |attribute, index|
+        .callout
+          table
+            tbody
+              tr
+                td colspan="3" ##{index+1}
+              tr
+                td Название
+                td #{attribute.name}
+              tr
+                td Значение
+                td #{index + 1}. #{attribute.name}
+    td
+      h6 Количество отличающихся дисциплин (#{differ.missed_in_compare_with.count})
+      - differ.missed_in_compare_with.each_with_index do |attribute, index|
+          .callout
+            table
+              tbody
+                tr
+                  td colspan="3" ##{index+1}
+                tr
+                  td Название
+                  td #{attribute.name}
+                tr
+                  td Значение
+                  td #{index + 1}. #{attribute.name}

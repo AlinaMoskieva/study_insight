@@ -21,13 +21,17 @@
           td = curriculum.year
           td = old_curriculum.year
         tr
-          td.text-centered.primary_colored colspan="3" 2. Анализ структуры
+          td.text-centered.primary_colored colspan="3" 2. Анализ структуры и дополнительных элементов
         tr
           td.text-centered.colored colspan="3" 2.1. Анализ дополнительных атрибутов
         = render "custom_attribute_diff", custom_attributes_diff: custom_attributes_diff
         tr
           td.text-centered.colored colspan="3" 2.2. Анализ дополнительных секций
         = render "custom_section_diff", custom_sections_diff: custom_sections_diff
+        tr
+          td.text-centered.primary_colored colspan="3" 3. Анализ дисциплин
+        tr
+          = render "disciplines_diff", differ: disciplines_diff
               
         
         

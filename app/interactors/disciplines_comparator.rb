@@ -24,7 +24,7 @@ class DisciplinesComparator
         target: target_record,
         comare_with: cw_record,
         association_attributes: CustomAttributesComparator.new(target: target_record, compare_with: cw_record).call,
-        discipline_programs: {}
+        discipline_programs: DisciplineProgramsComparator.new(target: target_record, compare_with: cw_record).call
       })
     end
   end

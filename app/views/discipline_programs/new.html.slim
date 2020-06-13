@@ -6,7 +6,8 @@
       = f.input :name, required: true
       = f.input :description, as: :text, required: true
       = f.input :year, required: true
-
+      
+      = render "custom_sections/custom_attribute_form", f: f
       = render "custom_sections/form", f: f
       
       .actions

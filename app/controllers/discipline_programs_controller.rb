@@ -2,6 +2,7 @@ class DisciplineProgramsController < ApplicationController
   expose :discipline_program
   expose :discipline_programs, -> { discipline.discipline_programs }
   expose :custom_sections, -> { discipline_program.custom_sections.includes(:custom_section_units).order(:id) }
+  expose :custom_attributes, -> { discipline_program.custom_attributes.order(:id) }
 
   expose :discipline
 
@@ -16,8 +17,6 @@ class DisciplineProgramsController < ApplicationController
   end
 
   def update
-    pry
-
     if discipline_program.update(discipline_program_params)
       redirect_to discipline_program, notice: "Программа дисциплины была успешно обновленa"
     else
@@ -39,7 +38,8 @@ class DisciplineProgramsController < ApplicationController
           custom_attributes_attributes: [:id, :name, :value, :_destroy]
         ],
         custom_attributes_attributes: [:id, :name, :value, :_destroy]
-      ]
+      ],
+      custom_attributes_attributes: [:id, :name, :value, :_destroy]
     )
   end
 end

@@ -25,6 +25,8 @@
         tr
           th(width="150") Год
           td = discipline_program.year
+    - if custom_attributes.any?
+      = render "custom_sections/custom_attribute_list", custom_attributes: custom_attributes
 .row
   .medium-10.columns
     = render "custom_sections/list", custom_sections: custom_sections

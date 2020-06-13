@@ -17,6 +17,7 @@ tr
             table
               = render "custom_attribute_diff", custom_attributes_diff: attribute.association_attributes
             h6 2. Рабочие программы дисциплин
+            = render "discipline_programs_diff", differ: attribute.discipline_programs
       - else
         p.text-centered
           = "Нет общих дисциплин"

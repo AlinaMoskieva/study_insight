@@ -1,7 +1,6 @@
-class CustomAttributesComparator
+class CustomAttributesComparator < BaseComparator
   include Interactor
 
-  delegate :target, :compare_with, to: :context
   delegate :custom_attributes, to: :target, prefix: true
   delegate :custom_attributes, to: :compare_with, prefix: true
 
@@ -23,14 +22,10 @@ class CustomAttributesComparator
         name: target_attr.name,
         target: target_attr,
         comare_with: cw_attribute,
-        similar_percentage: target_attr.value.damerau_levenshtein_similar(cw_attribute.value),
-        diff: diff(cw_attribute.value, target_attr.value)
+        similar_percentage: texts_similar_percentage(target_attr.value, cw_attribute.value),
+        diff: diff(target_attr.value, cw_attribute.value)
       })
     end
-  end
-
-  def diff(string_1, string_2)
-     Differ.diff_by_word(string_1, string_2).format_as(:html)
   end
 
   def missed_attributes_in_compare_with

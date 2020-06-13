@@ -1,4 +1,4 @@
-class CustomUnitsComparator
+class CustomUnitsComparator < BaseComparator
   include Interactor
 
   delegate :target, :compare_with, to: :context
@@ -23,15 +23,11 @@ class CustomUnitsComparator
         name: target_unit.name,
         target: target_unit,
         comare_with: cw_section_unit,
-        similar_percentage: target_unit.value.damerau_levenshtein_similar(cw_section_unit.value),
+        similar_percentage: texts_similar_percentage(target_unit.value, cw_section_unit.value),
         diff: diff(cw_section_unit.value, target_unit.value),
         association_attributes: CustomAttributesComparator.new(target: target_unit, compare_with: cw_section_unit).call
       })
     end
-  end
-
-  def diff(string_1, string_2)
-     Differ.diff_by_word(string_1, string_2).format_as(:html)
   end
 
   def missed_section_units_in_compare_with

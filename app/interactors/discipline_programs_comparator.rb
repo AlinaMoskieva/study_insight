@@ -1,4 +1,4 @@
-class DisciplineProgramsComparator
+class DisciplineProgramsComparator < BaseComparator
   include Interactor
 
   delegate :target, :compare_with, to: :context
@@ -24,8 +24,8 @@ class DisciplineProgramsComparator
     return unless target_discipline_program.description && compare_with_discipline_program.description
 
     OpenStruct.new({
-      similar_percentage: target_discipline_program.description.damerau_levenshtein_similar(compare_with_discipline_program.description),
-      diff: Differ.diff_by_word(target_discipline_program.description, compare_with_discipline_program.description).format_as(:html)
+      similar_percentage: texts_similar_percentage(target_discipline_program.description, compare_with_discipline_program.description),
+      diff: diff(target_discipline_program.description, compare_with_discipline_program.description)
     })
   end
 

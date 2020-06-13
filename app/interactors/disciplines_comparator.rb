@@ -1,4 +1,4 @@
-class DisciplinesComparator
+class DisciplinesComparator < BaseComparator
   include Interactor
 
   delegate :target, :compare_with, to: :context
@@ -27,10 +27,6 @@ class DisciplinesComparator
         discipline_programs: DisciplineProgramsComparator.new(target: target_record, compare_with: cw_record).call
       })
     end
-  end
-
-  def diff(string_1, string_2)
-    Differ.diff_by_word(string_1, string_2).format_as(:html)
   end
 
   def missed_disciplines_in_compare_with

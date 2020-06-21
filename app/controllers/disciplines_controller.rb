@@ -3,6 +3,7 @@ class DisciplinesController < ApplicationController
   expose :disciplines, -> { curriculum.disciplines }
   expose :discipline_program, ->{ discipline.discipline_program }
   expose :custom_attributes, -> { discipline.custom_attributes }
+  expose :custom_sections, ->{ discipline.custom_sections }
 
   expose :curriculum
 
@@ -33,6 +34,12 @@ class DisciplinesController < ApplicationController
 
   def discipline_params
     params.require(:discipline).permit(:name, :course_number,
+      custom_sections_attributes: [:id, :name, :value, :_destroy,
+          custom_section_units_attributes: [:id, :name, :value, :_destroy,
+            custom_attributes_attributes: [:id, :name, :value, :_destroy]
+          ],
+          custom_attributes_attributes: [:id, :name, :value, :_destroy]
+        ],
       custom_attributes_attributes: [:id, :name, :value, :_destroy]
     )
   end

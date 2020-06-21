@@ -3,8 +3,8 @@
     tbody
       tr
         td(width="150px") Название
-        td = differ.target.name
-        td = differ.compare_with.name
+        td = differ.target&.name
+        td = differ.compare_with&.name
       - if differ.description_compare
         tr
           td(width="150px") Процент схожести описаний
@@ -15,13 +15,20 @@
         tr
           td(width="150px") Процент схожести всего контента РПД
           td colspan="2" = differ.whole_content_change
-  h4 Анализ ассоциаций
-  h5 1. Анализ дополнительных атрибутов
-  .callout
-    table
-      = render "custom_attribute_diff", custom_attributes_diff: differ.associations.custom_attributes
-  h5 2. Анализ дополнительных разделов
-  .callout
-    table
-      = render "custom_section_diff", custom_sections_diff: differ.associations.custom_sections
-        
+  - if differ.associations
+    h4 Анализ ассоциаций
+    h5 1. Анализ дополнительных атрибутов
+    .callout
+      - if differ.associations.custom_attributes.any?
+        table
+          = render "custom_attribute_diff", custom_attributes_diff: differ.associations.custom_attributes
+      - else
+        h4 Нет атрибутов для анализа
+    h5 2. Анализ дополнительных разделов
+    .callout
+      - if differ.associations.custom_sections.any?
+        table
+          = render "custom_section_diff", custom_sections_diff: differ.associations.custom_sections
+      - else
+        h4 Нет разделов для анализа
+          

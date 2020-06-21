@@ -5,6 +5,7 @@
     = simple_nested_form_for [curriculum, discipline] do |f|
       = f.input :name, required: true
       = render "custom_sections/custom_attribute_form", f: f
+      = render "custom_sections/form", f: f
 
       .actions
         = f.button :submit, "Создать дисциплину",class: "hollow button"

@@ -6,6 +6,9 @@
       = f.input :name, required: true
       = render "custom_sections/custom_attribute_form", f: f
 
+      h4 Редактировать дополнительные разделы (#{discipline.custom_sections.count})
+      = render "custom_sections/form", f: f
+
       .actions
         = f.button :submit, "Обновить дисциплину",class: "hollow button"
         '

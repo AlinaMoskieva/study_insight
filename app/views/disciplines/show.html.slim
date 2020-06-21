@@ -13,7 +13,7 @@
             = link_to "Вернутся к учебному плану", curriculum_path(discipline.curriculum)
 .row
   .medium-7.columns
-    h5 1. Информация о дисциплине
+    h4 1. Информация о дисциплине
     .callout.primary
       table.hover
         tbody
@@ -23,8 +23,11 @@
       - if custom_attributes.any?
         = render "custom_sections/custom_attribute_list", custom_attributes: custom_attributes
 .row
+  .medium-10.columns
+    = render "custom_sections/list", custom_sections: custom_sections
+.row
   .medium-7.columns
-    h5 2. РПД
+    h4 3. Рабочая программа дисциплины
     - if discipline_program
       = link_to "Просмотреть РПД", discipline_program, class: "hollow primary button" 
     - else

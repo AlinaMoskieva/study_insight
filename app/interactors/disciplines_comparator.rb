@@ -31,6 +31,7 @@ class DisciplinesComparator < BaseComparator
   def compare_associations(target, cw)
     OpenStruct.new({
       custom_attributes: CustomAttributesComparator.new(target: target, compare_with: cw).call,
+      custom_sections: CustomSectionsComparator.new(target: target, compare_with: cw).call,
       discipline_programs: DisciplineProgramsComparator.new(target: target, compare_with: cw).call
     })
   end

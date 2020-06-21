@@ -15,9 +15,9 @@ tr
             h4 Анализ ассоциаций
             h5 1. Дополнительные атрибуты
             table
-              = render "custom_attribute_diff", custom_attributes_diff: attribute.association_attributes
+              = render "custom_attribute_diff", custom_attributes_diff: attribute.associations.custom_attributes
             h5 2. Рабочие программы дисциплин
-            = render "discipline_programs_diff", differ: attribute.discipline_programs
+            = render "discipline_programs_diff", differ: attribute.associations.discipline_programs
       - else
         p.text-centered
           = "Нет общих дисциплин"

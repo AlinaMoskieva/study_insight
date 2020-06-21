@@ -19,7 +19,7 @@
                   = attribute.diff.html_safe
           h5 Анализ ассоциаций
           table
-            = render "custom_attribute_diff", custom_attributes_diff: attribute.association_attributes
+            = render "custom_attribute_diff", custom_attributes_diff: attribute.associations.custom_attributes
     - else
       p.text-centered
         = "Нет общих единиц раздела"

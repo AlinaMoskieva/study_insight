@@ -12,7 +12,7 @@ class DisciplineProgramsComparator < BaseComparator
     
     if target_discipline_program && compare_with_discipline_program
       comparation_result.description_compare = description_compare
-      comparation_result.associations_compare = associations_compare
+      comparation_result.associations = associations_compare
       comparation_result.whole_content_change = whole_content_compare
     end
 

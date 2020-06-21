@@ -1,5 +1,5 @@
 tr
-  td Анализ общих разделов
+  td Анализ общих cекций
   td colspan="2"
     - if custom_sections_diff.similar.any?
       - custom_sections_diff.similar.each_with_index do |attr, index| 
@@ -19,19 +19,21 @@ tr
                 td.diff
                   = attr.diff.html_safe
           h4 Анализ ассоциаций 
-          h5 1. Дополнительные разделы раздела
-          = render "custom_section_unit_diff", differ: attr.association_units, tu: attr.target.custom_section_units, cwu: attr.comare_with.custom_section_units 
-          h5 2. Дополнительные атрибуты раздела
+          h5 1. Дополнительные разделы секции
+          = render "custom_section_unit_diff", differ: attr.associations.custom_units, tu: attr.target.custom_section_units, cwu: attr.comare_with.custom_section_units 
+          h5 2. Дополнительные атрибуты секции
           table
-            = render "custom_attribute_diff", custom_attributes_diff: attr.association_attributes
+            = render "custom_attribute_diff", custom_attributes_diff: attr.associations.custom_attributes
           
     - else
       p.text-centered
-        = "Нет общих разделов"
+        = "Нет общих секций"
+
+  
   tr
-    td Отличающиеся раздела
+    td Отличающиеся секции
     td
-      h6 Количество отличающихся разделов (#{custom_sections_diff.missed_in_target.count})
+      h6 Количество отличающихся секций (#{custom_sections_diff.missed_in_target.count})
       - custom_sections_diff.missed_in_target.each_with_index do |attr, index|
         .callout
           table
@@ -45,7 +47,7 @@ tr
                 td Значение
                 td = attr.value
     td
-      h6 Количество отличающихся разделов (#{custom_sections_diff.missed_in_compare_with.count})
+      h6 Количество отличающихся секций (#{custom_sections_diff.missed_in_compare_with.count})
       - custom_sections_diff.missed_in_compare_with.each_with_index do |attr, index|
           .callout
             table

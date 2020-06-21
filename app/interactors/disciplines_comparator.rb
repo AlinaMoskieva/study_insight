@@ -23,10 +23,16 @@ class DisciplinesComparator < BaseComparator
         name: target_record.name,
         target: target_record,
         comare_with: cw_record,
-        association_attributes: CustomAttributesComparator.new(target: target_record, compare_with: cw_record).call,
-        discipline_programs: DisciplineProgramsComparator.new(target: target_record, compare_with: cw_record).call
+        associations: compare_associations(target_record, cw_record)
       })
     end
+  end
+
+  def compare_associations(target, cw)
+    OpenStruct.new({
+      custom_attributes: CustomAttributesComparator.new(target: target, compare_with: cw).call,
+      discipline_programs: DisciplineProgramsComparator.new(target: target, compare_with: cw).call
+    })
   end
 
   def missed_disciplines_in_compare_with

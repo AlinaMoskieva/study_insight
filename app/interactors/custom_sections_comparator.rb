@@ -38,10 +38,16 @@ class CustomSectionsComparator < BaseComparator
         comare_with: cw_section,
         similar_percentage: texts_similar_percentage(target_section.value, cw_section.value),
         diff: diff(cw_section.value, target_section.value),
-        association_units: CustomUnitsComparator.new(target: target_section, compare_with: cw_section).call,
-        association_attributes: CustomAttributesComparator.new(target: target_section, compare_with: cw_section).call
+        associations: compare_associations(target_section, cw_section)
       })
     end
+  end
+
+  def compare_associations(target, cw)
+    OpenStruct.new({
+      custom_units: CustomUnitsComparator.new(target: target, compare_with: cw).call,
+      custom_attributes: CustomAttributesComparator.new(target: target, compare_with: cw).call
+    })
   end
 
   def target_custom_sections_names

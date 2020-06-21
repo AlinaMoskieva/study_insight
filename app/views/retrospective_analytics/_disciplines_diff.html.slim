@@ -36,7 +36,7 @@ tr
                 td #{attribute.name}
               tr
                 td Значение
-                td #{index + 1}. #{attribute.name}
+                td = attribute.value
     td
       h6 Количество отличающихся дисциплин (#{differ.missed_in_compare_with.count})
       - differ.missed_in_compare_with.each_with_index do |attribute, index|
@@ -50,4 +50,4 @@ tr
                   td #{attribute.name}
                 tr
                   td Значение
-                  td #{index + 1}. #{attribute.name}
+                  td = attribute.value

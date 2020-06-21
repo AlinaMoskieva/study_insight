@@ -24,9 +24,9 @@
       p.text-centered
         = "Нет общих единиц раздела"
     table
-      td(width="150px") Отличающиеся единицы секции
+      td(width="150px") Отличающиеся единицы раздела
       td
-        h6 Количество отличающихся единиц секции (#{differ.missed_in_target.count})
+        h6 Количество отличающихся единиц раздела (#{differ.missed_in_target.count})
         - differ.missed_in_target.each_with_index do |attribute, index|
           .callout
             table
@@ -38,9 +38,9 @@
                   td #{attribute.name}
                 tr
                   td Значение
-                  td #{index + 1}. #{attribute.name}
+                  td = attribute.value
       td
-        h6 Количество отличающихся единиц секции (#{differ.missed_in_compare_with.count})
+        h6 Количество отличающихся единиц раздела (#{differ.missed_in_compare_with.count})
         - differ.missed_in_compare_with.each_with_index do |attribute, index|
             .callout
               table
@@ -52,7 +52,7 @@
                     td #{attribute.name}
                   tr
                     td Значение
-                    td #{index + 1}. #{attribute.name}
+                    td = attribute.value
 
     
   - else

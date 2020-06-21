@@ -35,7 +35,8 @@
                   ul.menu
                     - (curriculumns.to_a - [curriculum]).each do |compare_with|
                       li
-                        = link_to compare_with.year, department_retrospective_analytics_path(department, compare_with: compare_with.id, target: curriculum.id)
+                        = link_to "[#{compare_with.year}] #{compare_with.name}",
+                          department_retrospective_analytics_path(department, compare_with: compare_with.id, target: curriculum.id)
             td = link_to "Редактирвоание", edit_curriculum_path(curriculum)
             td = link_to "Удаление", curriculum, data: { confirm: "Вы уверены?" }, method: :delete
 

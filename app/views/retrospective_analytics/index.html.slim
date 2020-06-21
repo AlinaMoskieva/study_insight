@@ -1,38 +1,39 @@
-.row
-  .medium-12.columns
-    h2.text-centered Ретроспективный анализ учебного плана
-.row
-  .medium-12.columns
-    table
-      thead
-        tr
-          th(width="150px") Параметры сравнения
-          th(width="48%")
-            .text-centered
-              = link_to curriculum.name, curriculum
-          th(width="48%")
-            .text-centered
-              = link_to old_curriculum.name, old_curriculum
-      tbody
-        tr
-          td.text-centered.primary_colored colspan="3" 1. Общая информация
-        tr
-          td Год
-          td = curriculum.year
-          td = old_curriculum.year
-        tr
-          td.text-centered.primary_colored colspan="3" 2. Анализ структуры и дополнительных элементов
-        tr
-          td.text-centered.colored colspan="3" 2.1. Анализ дополнительных атрибутов
-        = render "custom_attribute_diff", custom_attributes_diff: custom_attributes_diff
-        tr
-          td.text-centered.colored colspan="3" 2.2. Анализ дополнительных секций
-        = render "custom_section_diff", custom_sections_diff: custom_sections_diff
-        tr
-          td.text-centered.primary_colored colspan="3" 3. Анализ дисциплин
-        tr
-          = render "disciplines_diff", differ: disciplines_diff
-              
-        
-        
-        
+
+.large-12.columns
+  h2.text-centered Ретроспективный анализ учебного плана
+
+.large-12.columns
+  table
+    thead
+      tr
+        th(width="150px") Параметры сравнения
+        th(width="48%")
+          .text-centered
+            = link_to curriculum.name, curriculum
+        th(width="48%")
+          .text-centered
+            = link_to old_curriculum.name, old_curriculum
+    tbody
+      tr
+        td.text-centered.primary_colored colspan="3" 1. Общая информация
+      tr
+        td Год
+        td.text-centered
+          = curriculum.year
+        td.text-centered = old_curriculum.year
+      tr
+        td.text-centered.primary_colored colspan="3" 2. Анализ ассоциированных элементов
+      tr
+        td.text-centered.colored colspan="3" 2.1. Анализ дополнительных атрибутов
+      = render "custom_attribute_diff", custom_attributes_diff: custom_attributes_diff
+      tr
+        td.text-centered.colored colspan="3" 2.2. Анализ дополнительных разделов
+      = render "custom_section_diff", custom_sections_diff: custom_sections_diff
+      tr
+        td.text-centered.primary_colored colspan="3" 3. Анализ дисциплин
+      tr
+        = render "disciplines_diff", differ: disciplines_diff
+            
+      
+      
+      

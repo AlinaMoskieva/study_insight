@@ -9,6 +9,7 @@ class BaseComparator
     prepared_target = PrepareForComparation.new(string: target).call
     prepared_compare_with = PrepareForComparation.new(string: compare_with).call
     
-    prepared_target.damerau_levenshtein_similar(prepared_compare_with).round(2)
+    coefficient = prepared_target.damerau_levenshtein_similar(prepared_compare_with)
+    (coefficient * 100).round(2).to_s + "%"
   end
 end

@@ -25,14 +25,14 @@
         td.text-centered.primary_colored colspan="3" 2. Анализ ассоциированных элементов
       tr
         td.text-centered.colored colspan="3" 2.1. Анализ дополнительных атрибутов
-      = render "custom_attribute_diff", custom_attributes_diff: custom_attributes_diff
+      = render "custom_attribute_diff", custom_attributes_diff: curriculum_analysis.associations.custom_attributes
       tr
         td.text-centered.colored colspan="3" 2.2. Анализ дополнительных разделов
-      = render "custom_section_diff", custom_sections_diff: custom_sections_diff
+      = render "custom_section_diff", custom_sections_diff: curriculum_analysis.associations.custom_sections
       tr
         td.text-centered.primary_colored colspan="3" 3. Анализ дисциплин
       tr
-        = render "disciplines_diff", differ: disciplines_diff
+        = render "disciplines_diff", differ: curriculum_analysis.associations.disciplines
             
       
       

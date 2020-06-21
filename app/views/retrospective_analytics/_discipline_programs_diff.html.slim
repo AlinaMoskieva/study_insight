@@ -23,12 +23,12 @@
         table
           = render "custom_attribute_diff", custom_attributes_diff: differ.associations.custom_attributes
       - else
-        h4 Нет атрибутов для анализа
+        h6 Нет атрибутов для анализа
     h5 2. Анализ дополнительных разделов
     .callout
       - if differ.associations.custom_sections.any?
         table
           = render "custom_section_diff", custom_sections_diff: differ.associations.custom_sections
       - else
-        h4 Нет разделов для анализа
+        h6 Нет разделов для анализа
           

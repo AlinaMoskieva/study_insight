@@ -1,3 +1,44 @@
 .container {
   padding-top: $global-padding;
 }
+
+.custom_attribute {
+  background-color: #FFF3D8 !important;
+}
+
+.custom_section {
+  background-color: #aba9bf !important;
+}
+
+.text-centered {
+  text-align: center;
+}
+
+.colored {
+  background-color: #FFF3D8;
+  font-weight: bold;
+}
+
+.primary_colored {
+  background-color: #aba9bf;
+  font-weight: bold;
+}
+
+.diff {
+  background-color: #fff;
+  border: solid #424A4C 1px;
+  padding: 10px;
+
+  ul {
+    list-style: none;
+    margin-left: 0;
+  }
+
+  del {
+    background-color: #F97068;
+  }
+
+  ins {
+    background-color: #E7EEEE;
+  }
+}

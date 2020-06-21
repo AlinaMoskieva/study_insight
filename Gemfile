@@ -25,12 +25,16 @@ gem "inky-rb", require: "inky"
 gem "meta-tags"
 gem "simple_form"
 gem "slim"
+gem "nested_form"
 
 # all other gems
+gem "amatch"
+gem "differ"
 gem "decent_decoration"
 gem "decent_exposure"
 gem "devise"
 gem "draper"
+gem "ckeditor"
 gem "flamegraph"
 gem "google-analytics-rails"
 gem "health_check"
@@ -82,6 +86,7 @@ group :development, :test do
   gem "rubocop-rspec", require: false
   gem "scss_lint", require: false
   gem "slim_lint", require: false
+  gem "pry", "~> 0.10"
 end
 
 group :development do

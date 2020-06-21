@@ -1,0 +1,26 @@
+.row
+  .columns
+    h3 Список Университетов
+.row
+  .medium-8.columns
+    - if universities.any?
+      table class="hollow"
+        thead
+          tr
+            th Название
+            th Редактирование
+            th Удаление
+
+        tbody
+          - universities.each do |univerity|
+            tr
+              td = link_to univerity.name, univerity
+              td = link_to "Edit", edit_university_path(univerity)
+              td = link_to "Destroy", univerity, data: { confirm: "Вы уверены?" }, method: :delete
+
+    .hidden-form
+      = link_to "Создать университет", "#", class: "hollow button show-form-button"
+
+      .hidden-section
+        h3 Создать университет
+        == render "form"

@@ -1,0 +1,31 @@
+.row
+  .medium-4.columns
+    h3 #{institution.name}
+  
+  .medium-2.columns
+    ul.dropdown.menu data-dropdown-menu=""
+      li
+        a href="#" class="hollow button"  Actions
+        ul class="menu"
+          li
+            = link_to "Редактирование", edit_institution_path(institution)
+          li
+            = link_to "Вернутся к университету", institution.university
+.row
+  .medium-8.columns
+    h4 Направления (#{departments.count})
+    table class="hollow"
+      thead
+        tr
+          th Название
+          th Редактирование
+          th Удаление
+
+      tbody
+        - departments.each do |department|
+          tr
+            td = link_to department.name, department
+            td = link_to "Редактирвоание", edit_department_path(department)
+            td = link_to "Удаление", department, data: { confirm: "Вы уверены?" }, method: :delete
+
+    = link_to "Создать направление", new_institution_department_path(institution), class: "hollow button"

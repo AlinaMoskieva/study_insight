@@ -1,0 +1,19 @@
+.row
+  .medium-10.columns
+    h2 Редактирование рабочую программу дисциплины
+
+    = simple_nested_form_for discipline_program do |f|
+      = f.input :name, required: true
+      = f.input :description, as: :text, required: true
+      = f.input :year, required: true
+      
+      = render "custom_sections/custom_attribute_form", f: f
+
+      h4 Редактировать дополнительные разделы (#{discipline_program.custom_sections.count})
+      = render "custom_sections/form", f: f
+
+      .actions
+        = f.button :submit, "Обновить рабочую программу дисциплины",class: "hollow button"
+        '
+        = link_to "Назад", :back, class: "hollow button"
+

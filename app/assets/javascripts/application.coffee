@@ -6,9 +6,11 @@
 #
 #= require jquery2
 #= require jquery-ujs
+#= require jquery_nested_form
 #= require foundation
 #= require current_user
+#= require hidden_form
+#= require_tree ./ckeditor
 #= require_tree ../templates
-#= require_tree .
 
 $(document).foundation()

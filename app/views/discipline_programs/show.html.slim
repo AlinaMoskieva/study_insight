@@ -1,0 +1,32 @@
+.row
+  .medium-9.columns
+    h3 Рабочая программа #{discipline_program.discipline.name} (#{discipline_program.year} год)
+  .medium-2.columns
+    ul.dropdown.menu data-dropdown-menu=""
+      li
+        a href="#" class="hollow button" Действия
+        ul class="menu"
+          li
+            = link_to "Редактирование", edit_discipline_program_path(discipline_program)
+          li
+            = link_to "Вернутся к дисциплине", discipline_path(discipline_program.discipline)
+.row
+  .medium-10.columns
+    h4 1. Общая информация
+    
+    table.hover
+      tbody
+        tr
+          th(width="150") Название РПД
+          td = discipline_program.name
+        tr
+          th(width="150") Описание
+          td = discipline_program.description
+        tr
+          th(width="150") Год
+          td = discipline_program.year
+    - if custom_attributes.any?
+      = render "custom_sections/custom_attribute_list", custom_attributes: custom_attributes
+.row
+  .medium-10.columns
+    = render "custom_sections/list", custom_sections: custom_sections

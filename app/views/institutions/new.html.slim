@@ -1,0 +1,12 @@
+.row
+  .medium-8.columns
+    h2 Создание института
+
+    = simple_form_for [university, institution] do |f|
+      = f.input :name, required: true
+
+      .actions
+        = f.button :submit, "Создать институт",class: "hollow button"
+        '
+        = link_to "Назад", :back, class: "hollow button"
+

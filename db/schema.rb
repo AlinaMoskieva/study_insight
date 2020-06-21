@@ -10,10 +10,90 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20100713113845) do
+ActiveRecord::Schema.define(version: 20200607102324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "curriculums", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.bigint "department_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "year"
+    t.index ["department_id"], name: "index_curriculums_on_department_id"
+  end
+
+  create_table "custom_attributes", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "value"
+    t.string "customizable_type"
+    t.bigint "customizable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customizable_type", "customizable_id"], name: "customizable_objects_index"
+  end
+
+  create_table "custom_section_units", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "value"
+    t.bigint "custom_section_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["custom_section_id"], name: "index_custom_section_units_on_custom_section_id"
+  end
+
+  create_table "custom_sections", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "value"
+    t.string "targetable_type"
+    t.bigint "targetable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["targetable_type", "targetable_id"], name: "index_custom_sections_on_targetable_type_and_targetable_id"
+  end
+
+  create_table "departments", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.bigint "institution_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["institution_id"], name: "index_departments_on_institution_id"
+  end
+
+  create_table "discipline_programs", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "year", null: false
+    t.string "description", null: false
+    t.bigint "discipline_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["discipline_id"], name: "index_discipline_programs_on_discipline_id"
+  end
+
+  create_table "disciplines", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.bigint "curriculum_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["curriculum_id"], name: "index_disciplines_on_curriculum_id"
+  end
+
+  create_table "institutions", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "description", default: ""
+    t.bigint "university_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["university_id"], name: "index_institutions_on_university_id"
+  end
+
+  create_table "universities", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "description", default: ""
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

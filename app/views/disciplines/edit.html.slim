@@ -1,0 +1,13 @@
+.row
+  .medium-8.columns
+    h2 Редактирование дисциплины
+
+    = simple_nested_form_for [discipline] do |f|
+      = f.input :name, required: true
+      = render "custom_sections/custom_attribute_form", f: f
+
+      .actions
+        = f.button :submit, "Обновить дисциплину",class: "hollow button"
+        '
+        = link_to "Назад", :back, class: "hollow button"
+
